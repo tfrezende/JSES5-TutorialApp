@@ -162,16 +162,15 @@ var UIController = (function(){
         exactly 2 decimal points
         comma separating the thousands
         */
-
         num = Math.abs(num); // módulo
         num = num.toFixed(2); // 2 decimals
-
+        console.log(num);
         numSplit = num.split('.');
         int = numSplit[0];
         dec = numSplit[1];
 
         if(int.length > 3) {
-            int = int.substr(0, int.length - 2) + ',' +  int.substr(int.legnth - 3, 3);
+            int = int.substr(0, int.length - 3) + ',' +  int.substr(int.length - 3, 3);
         }
 
         return (type === 'exp' ? '-' : '+') + ' ' + int + '.' + dec;
@@ -301,6 +300,8 @@ var UIController = (function(){
             nodeListForEach(fields, function(curr){
                 curr.classList.toggle('red-focus');
             });
+
+            document.querySelector(DOMStrings.inputBtn).classList.toggle('red');
         },
 
 
